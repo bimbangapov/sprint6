@@ -56,7 +56,7 @@ func (h *Handler) HandleUpload(w http.ResponseWriter, r *http.Request) {
 	}
 	defer uploadsFile.Close()
 
-	_, err = uploadsFile.Write([]byte(convertFilebody))
+	_, err = uploadsFile.Write(filebody)
 	if err != nil {
 		h.Logger.Println("Internal server error", err)
 		http.Error(w, "Internal server error", http.StatusInternalServerError)

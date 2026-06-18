@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+
 	err := os.Mkdir("logs", 0755)
 	// если директория существует, то никак не реагируем
 	if err != nil && !errors.Is(err, os.ErrExist) {
