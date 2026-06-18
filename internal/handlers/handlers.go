@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/Yandex-Practicum/go1fl-sprint6-final/internal/service"
@@ -56,7 +57,7 @@ func (h *Handler) HandleUpload(w http.ResponseWriter, r *http.Request) {
 	}
 	defer uploadsFile.Close()
 
-	_, err = uploadsFile.Write([]byte(convertFilebody))
+	_, err = uploadsFile.Write([]byte(strings.ReplaceAll(convertFilebody, "\n", "")))
 	if err != nil {
 		h.Logger.Println("Internal server error", err)
 		http.Error(w, "Internal server error", http.StatusInternalServerError)
