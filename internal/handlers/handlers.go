@@ -64,7 +64,7 @@ func (h *Handler) HandleUpload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	h.Logger.Println("POST /upload")
-	outputString := fmt.Sprintf("Содержимое файла: \n%s", convertFilebody)
+	outputString := fmt.Sprintf(convertFilebody)
 	fmt.Println("file body", string(filebody))
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.WriteHeader(http.StatusOK)
